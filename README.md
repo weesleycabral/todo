@@ -6,7 +6,6 @@ Este é um aplicativo de lista de tarefas (To-Do List) desenvolvido em Flutter. 
 
 - **Flutter**: Framework de desenvolvimento de aplicativos móveis.
 - **Dart**: Linguagem de programação utilizada pelo Flutter.
-- **SQLite**: Banco de dados leve para armazenamento local.
 
 ## Funcionalidades
 
@@ -45,16 +44,3 @@ Este é um aplicativo de lista de tarefas (To-Do List) desenvolvido em Flutter. 
     flutter run
     ```
 
-## Estrutura do Projeto
-
-```plaintext
-flutter-todo-list/
-|- lib/
-  |- main.dart          # Ponto de entrada do aplicativo
-  |- models/            # Modelos de dados
-  |- screens/           # Telas do aplicativo
-  |- widgets/           # Widgets reutilizáveis
-  |- utils/             # Utilitários e helpers
-|- assets/              # Recursos estáticos (imagens, fontes, etc.)
-|- pubspec.yaml         # Configurações e dependências do Flutter
-|- README.md            # Documentação do projeto
