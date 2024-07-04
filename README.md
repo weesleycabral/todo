@@ -1,6 +1,6 @@
 # Flutter To-Do List
 
-Este é um aplicativo de lista de tarefas (To-Do List) desenvolvido em Flutter. Ele permite que os usuários adicionem, editem e excluam tarefas. Os dados são armazenados localmente no dispositivo usando SQLite.
+Este é um aplicativo de lista de tarefas (To-Do List) desenvolvido em Flutter. Ele permite que os usuários adicionem, editem e excluam tarefas. Os dados são armazenados localmente no dispositivo.
 
 ## Tecnologias Utilizadas
 
