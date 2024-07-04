@@ -1,24 +1,82 @@
-# Todo Project
+Flutter To-Do List App
 
-This project is a Flutter-based application designed to help users manage their tasks efficiently. It leverages Flutter's capabilities to run on multiple platforms, providing a seamless user experience across iOS, Android, and web platforms.
+Este é um aplicativo de lista de tarefas (To-Do List) desenvolvido em Flutter. Ele permite que os usuários adicionem, editem e excluam tarefas. Os dados são armazenados localmente no dispositivo usando SQLite.
+Tecnologias Utilizadas
 
-## Technologies Used
+    Flutter: Framework de desenvolvimento de aplicativos móveis.
+    Dart: Linguagem de programação utilizada pelo Flutter.
+    SQLite: Banco de dados leve para armazenamento local.
 
-- **Flutter**: A UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
-- **Dart**: The programming language used to develop Flutter applications.
-- **Android Studio & Xcode**: For running and testing the application on Android and iOS platforms, respectively.
+Funcionalidades
 
-## Installation
+    Adicionar novas tarefas.
+    Editar tarefas existentes.
+    Excluir tarefas.
+    Marcar tarefas como concluídas.
 
-### Prerequisites
+Pré-requisitos
 
-- Ensure you have Flutter installed on your system. If not, follow the instructions on the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
-- Android Studio or Xcode installed for Android and iOS development, respectively.
+    Flutter: Certifique-se de ter o Flutter instalado em sua máquina. Você pode seguir as instruções de instalação no site oficial do Flutter.
 
-### Steps
+Instalação
 
-1. **Clone the Repository**
+    Clone o repositório:
 
-   ```sh
-   git clone https://github.com/your-repository/todo.git
-   cd todo
+sh
+
+git clone https://github.com/seu-usuario/flutter-todo-list.git
+
+    Navegue até o diretório do projeto:
+
+sh
+
+cd flutter-todo-list
+
+    Instale as dependências:
+
+sh
+
+flutter pub get
+
+    Execute o aplicativo:
+
+sh
+
+flutter run
+
+Estrutura do Projeto
+
+bash
+
+flutter-todo-list/
+|- lib/
+  |- main.dart          # Ponto de entrada do aplicativo
+  |- models/            # Modelos de dados
+  |- screens/           # Telas do aplicativo
+  |- widgets/           # Widgets reutilizáveis
+  |- utils/             # Utilitários e helpers
+|- assets/              # Recursos estáticos (imagens, fontes, etc.)
+|- pubspec.yaml         # Configurações e dependências do Flutter
+|- README.md            # Documentação do projeto
+
+Como Usar
+
+    Ao abrir o aplicativo, você verá uma lista de tarefas (inicialmente vazia).
+    Para adicionar uma nova tarefa, clique no botão de adicionar (+) na parte inferior da tela.
+    Digite o título da tarefa e clique em "Salvar".
+    Para editar ou excluir uma tarefa, clique na tarefa desejada e selecione a ação desejada.
+    Para marcar uma tarefa como concluída, clique na caixa de seleção ao lado da tarefa.
+
+Contribuição
+
+Contribuições são bem-vindas! Se você deseja contribuir com este projeto, siga os passos abaixo:
+
+    Fork este repositório.
+    Crie um branch para sua feature (git checkout -b feature/nova-feature).
+    Faça commit das suas alterações (git commit -m 'Adiciona nova feature').
+    Envie para o branch (git push origin feature/nova-feature).
+    Abra um Pull Request.
+
+Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
