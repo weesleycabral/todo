@@ -34,7 +34,7 @@ class _AppWidgetState extends State<AppWidget> {
       debugShowCheckedModeBanner: false,
       home: const HomePage(title: 'TODO'),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
       themeMode: ThemeMode.light,
