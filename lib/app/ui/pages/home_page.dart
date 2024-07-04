@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             TextButton(
-              child: const Text('Salvar'),
+              child: const Text('Adicionar'),
               onPressed: () {
                 String newTodoId = Todo.generateUniqueId(todos);
                 Todo newTodo = Todo(id: newTodoId, title: _newTodoController.text, done: _newTodoDone);
@@ -102,15 +102,13 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (context, index) {
               final todo = todos[index];
               return Dismissible(
-                key: Key(todo.id!), // Certifique-se de que cada todo tem um ID único.
-                direction: DismissDirection.endToStart, // Permite arrastar apenas da direita para a esquerda.
+                key: Key(todo.id!),
+                direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
                   // Remove o item da lista
                   setState(() {
                     todos.removeAt(index);
                   });
-
-                  // Mostra uma Snackbar ou alguma confirmação de que o item foi excluído, se desejado.
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       backgroundColor: Colors.red,
