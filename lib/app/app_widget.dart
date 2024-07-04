@@ -32,9 +32,9 @@ class _AppWidgetState extends State<AppWidget> {
   Widget _appBuilder(_, __) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(title: 'TODO'),
+      home: const HomePage(title: 'Tarefas'),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
         useMaterial3: true,
       ),
       themeMode: ThemeMode.light,
