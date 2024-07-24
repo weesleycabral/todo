@@ -49,14 +49,14 @@ class _HomePageState extends State<HomePage> {
                 //     });
                 //   },
                 // ),
-                CheckboxListTile(
-                  title: const Text('Concluído'),
-                  value: _newTodoDone,
-                  onChanged: (bool? value) {
-                    _newTodoDone = value!;
-                    (context as Element).markNeedsBuild();
-                  },
-                ),
+                // CheckboxListTile(
+                //   title: const Text('Concluído'),
+                //   value: _newTodoDone,
+                //   onChanged: (bool? value) {
+                //     _newTodoDone = value!;
+                //     (context as Element).markNeedsBuild();
+                //   },
+                // ),
               ],
             ),
           ),
@@ -88,9 +88,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[300],
-        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: const MyDrawer(),
       body: Column(
@@ -109,8 +115,8 @@ class _HomePageState extends State<HomePage> {
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      backgroundColor: Colors.red,
-                      content: Text('Todo "${todo.title}" removido'),
+                      backgroundColor: Colors.green,
+                      content: Text('Todo "${todo.title}" concluido'),
                     ),
                   );
                 },
@@ -135,9 +141,34 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                child: ListTile(
-                  title: Text(todo.title),
-                  // Adicione aqui outros detalhes do seu Todo, como um ícone de checkbox.
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 600),
+                  curve: Curves.easeOut,
+                  transform: todo.done ? Matrix4.translationValues(MediaQuery.of(context).size.width, 0, 0) : Matrix4.identity(),
+                  child: ListTile(
+                    title: Text(todo.title),
+                    trailing: Checkbox(
+                      value: todo.done,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          todo.done = value!;
+                          if (todo.done) {
+                            Future.delayed(const Duration(milliseconds: 600), () {
+                              setState(() {
+                                todos.removeAt(index);
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: Colors.green,
+                                  content: Text('Todo "${todo.title}" concluido'),
+                                ),
+                              );
+                            });
+                          }
+                        });
+                      },
+                    ),
+                  ),
                 ),
               );
             },
@@ -150,7 +181,6 @@ class _HomePageState extends State<HomePage> {
           _newTodoController.clear();
           _newTodoDone = false;
         },
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
     );
