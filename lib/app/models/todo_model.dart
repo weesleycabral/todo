@@ -11,7 +11,6 @@ class Todo {
     this.done = false,
   });
 
-  // Método para gerar um ID único
   static String generateUniqueId(List<Todo> todos) {
     final random = Random();
     String generatedId;

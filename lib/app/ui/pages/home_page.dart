@@ -72,7 +72,6 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 String newTodoId = Todo.generateUniqueId(todos);
                 Todo newTodo = Todo(id: newTodoId, title: _newTodoController.text, done: _newTodoDone);
-                print(newTodo.id);
                 setState(() {
                   todos.add(newTodo);
                 });
@@ -105,7 +104,6 @@ class _HomePageState extends State<HomePage> {
                 key: Key(todo.id!),
                 direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
-                  // Remove o item da lista
                   setState(() {
                     todos.removeAt(index);
                   });
@@ -117,11 +115,24 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
                 background: Container(
-                  color: Colors.red,
+                  color: Colors.green,
                   alignment: Alignment.centerRight,
                   child: const Padding(
                     padding: EdgeInsets.only(right: 20.0),
-                    child: Icon(Icons.delete, color: Colors.white),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Arraste para concluir',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Icon(Icons.done, color: Colors.white),
+                      ],
+                    ),
                   ),
                 ),
                 child: ListTile(
@@ -130,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             },
-          )
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
