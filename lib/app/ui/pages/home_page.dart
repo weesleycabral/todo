@@ -5,8 +5,8 @@ import 'package:todo/app/models/todo_model.dart';
 import 'package:todo/app/ui/widgets/my_drawer.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
-  const HomePage({required this.title, super.key});
+  final String? title;
+  const HomePage({this.title, super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
-          widget.title,
+          widget.title!,
           style: const TextStyle(
             color: Colors.white,
           ),
