@@ -3,8 +3,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart' show FlutterNa
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtilInit, FontSizeResolvers;
 import 'package:todo/app/routes/routes.dart';
 
-import 'ui/pages/home_page.dart';
-
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
 

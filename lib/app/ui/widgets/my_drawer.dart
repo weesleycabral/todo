@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
+  void navigateOrCloseDrawer(BuildContext context) {
+    String? currentRoute = ModalRoute.of(context)?.settings.name;
+
+    if (currentRoute == '/') {
+      Navigator.of(context).pop();
+    } else {
+      Navigator.pushNamed(context, '/');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -27,9 +37,12 @@ class MyDrawer extends StatelessWidget {
           ),
           Column(
             children: <Widget>[
-              const ListTile(
-                title: Text('Home'),
-                leading: Icon(Icons.home),
+              ListTile(
+                title: const Text('Home'),
+                leading: const Icon(Icons.home),
+                onTap: () {
+                  navigateOrCloseDrawer(context);
+                },
               ),
               ListTile(
                 title: const Text('Tarefas concluidas'),
