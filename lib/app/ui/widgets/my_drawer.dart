@@ -8,8 +8,8 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const <Widget>[
-          DrawerHeader(
+        children: <Widget>[
+          const DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
@@ -27,13 +27,16 @@ class MyDrawer extends StatelessWidget {
           ),
           Column(
             children: <Widget>[
-              ListTile(
+              const ListTile(
                 title: Text('Home'),
                 leading: Icon(Icons.home),
               ),
               ListTile(
-                title: Text('Tarefas concluidas'),
-                leading: Icon(Icons.task),
+                title: const Text('Tarefas concluidas'),
+                leading: const Icon(Icons.task),
+                onTap: () {
+                  Navigator.pushNamed(context, '/todosDone');
+                },
               ),
             ],
           ),
