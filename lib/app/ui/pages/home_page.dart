@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/app/data/repositories/todo_repository.dart';
 import 'package:todo/app/models/todo_model.dart';
 import 'package:todo/app/ui/widgets/my_drawer.dart';
 
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Todo> todos = <Todo>[];
+  final TodoRepository _todoRepository = TodoRepository();
   bool _newTodoDone = false;
   late TextEditingController _newTodoController;
 
@@ -20,6 +22,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _newTodoController = TextEditingController();
+    _todoRepository.loadTodos().then((value) {
+      setState(() {
+        todos = value;
+      });
+    });
   }
 
   _addTodo() {
@@ -69,13 +76,14 @@ class _HomePageState extends State<HomePage> {
             ),
             TextButton(
               child: const Text('Adicionar'),
-              onPressed: () {
+              onPressed: () async {
                 String newTodoId = Todo.generateUniqueId(todos);
-                Todo newTodo = Todo(id: newTodoId, title: _newTodoController.text, done: _newTodoDone);
+                Todo newTodo = Todo(id: newTodoId, title: _newTodoController.text, done: _newTodoDone, completedDate: DateTime.now());
                 setState(() {
                   todos.add(newTodo);
                 });
                 Navigator.of(context).pop();
+                await _todoRepository.saveTodo(newTodo);
               },
             ),
           ],
@@ -110,9 +118,7 @@ class _HomePageState extends State<HomePage> {
                 key: Key(todo.id!),
                 direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
-                  setState(() {
-                    todos.removeAt(index);
-                  });
+                  _todoRepository.deleteTodo(todo.id!);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       backgroundColor: Colors.green,
@@ -152,10 +158,11 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (bool? value) {
                         setState(() {
                           todo.done = value!;
+                          _todoRepository.updateTodo(todo);
                           if (todo.done) {
                             Future.delayed(const Duration(milliseconds: 600), () {
                               setState(() {
-                                todos.removeAt(index);
+                                _todoRepository.deleteTodo(todo.id!);
                               });
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
