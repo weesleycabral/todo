@@ -32,6 +32,7 @@ class _AppWidgetState extends State<AppWidget> {
 
   Widget _appBuilder(_, __) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Routes(),
     );
   }
