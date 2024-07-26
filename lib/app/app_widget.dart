@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart' show FlutterNativeSplash;
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtilInit, FontSizeResolvers;
+import 'package:todo/app/routes/routes.dart';
 
 import 'ui/pages/home_page.dart';
 
@@ -30,15 +31,8 @@ class _AppWidgetState extends State<AppWidget> {
   }
 
   Widget _appBuilder(_, __) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(title: 'Tarefas'),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-        useMaterial3: true,
-      ),
-      themeMode: ThemeMode.light,
-      title: 'TODO List',
+    return const MaterialApp(
+      home: Routes(),
     );
   }
 
