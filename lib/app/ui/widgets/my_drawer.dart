@@ -25,6 +25,18 @@ class MyDrawer extends StatelessWidget {
               ],
             ),
           ),
+          Column(
+            children: <Widget>[
+              ListTile(
+                title: Text('Home'),
+                leading: Icon(Icons.home),
+              ),
+              ListTile(
+                title: Text('Tarefas concluidas'),
+                leading: Icon(Icons.task),
+              ),
+            ],
+          ),
         ],
       ),
     );
