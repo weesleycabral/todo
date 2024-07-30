@@ -21,7 +21,7 @@ class MyDrawerTile extends StatelessWidget {
       child: ListTile(
         title: Text(
           text,
-          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+          style: TextStyle(color: Theme.of(context).colorScheme.secondary),
         ),
         trailing: trailing,
         leading: Icon(
