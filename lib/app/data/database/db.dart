@@ -23,8 +23,15 @@ class DatabaseHelper {
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE todos(id TEXT PRIMARY KEY, title TEXT, done INTEGER)',
+          'CREATE TABLE todos(id TEXT PRIMARY KEY, title TEXT, done INTEGER, completedDate TEXT)',
         );
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await db.execute(
+            'ALTER TABLE todos ADD COLUMN completedDate TEXT',
+          );
+        }
       },
     );
   }

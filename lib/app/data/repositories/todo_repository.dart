@@ -23,7 +23,7 @@ class TodoRepository {
 
   Future<List<Todo>> getLast10CompletedTodos() async {
     List<Todo> completedTodos = todos.where((todo) => todo.done).toList();
-    completedTodos.sort((a, b) => b.completedDate.compareTo(a.completedDate));
+    completedTodos.sort((a, b) => b.completedDate!.compareTo(a.completedDate!));
     return completedTodos.take(10).toList();
   }
 }
