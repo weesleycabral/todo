@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/app/ui/widgets/my_drawer_tile.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -37,16 +38,16 @@ class MyDrawer extends StatelessWidget {
           ),
           Column(
             children: <Widget>[
-              ListTile(
-                title: const Text('Home'),
-                leading: const Icon(Icons.home),
+              MyDrawerTile(
+                text: 'Home',
+                icon: Icons.home,
                 onTap: () {
                   navigateOrCloseDrawer(context);
                 },
               ),
-              ListTile(
-                title: const Text('Tarefas concluidas'),
-                leading: const Icon(Icons.task),
+              MyDrawerTile(
+                text: 'Tarefas concluidas',
+                icon: Icons.task,
                 onTap: () {
                   Navigator.pushNamed(context, '/todosDone');
                 },
